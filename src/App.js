@@ -1,39 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react'
+import { BrowserRouter as Router,Route,Link } from 'react-router-dom'
+
 import './App.css';
 import Child1 from './child1'
 import Child2 from './child2'
-
-class App extends Component {
-  componentWillMount = () => {
-    console.log('component mounted')
-  }
-
-  componentWillUnmount = () =>{
-    console.log('unmount')
-  }
-
-  componentWillReceiveProps = () =>{
-    console.log('component will recieve props');
-    
-  }
+import Home from './initial/home'
 
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Child1/>
-        <Child2 />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <Home />
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/Child1">Child1</Link></li>
+        <li><Link to="/Child2">Child2</Link></li>
+      </ul>
+      <hr/>
 
-export default App;
+      <Route exact path="/" />
+      <Route path="/child1" component={Child1}/>
+      <Route path="/child2" component={Child2}/>
+    </div>
+  </Router>
+)
+export default App
