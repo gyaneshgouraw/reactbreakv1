@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Root from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { createStore } from 'redux'
+import todoApp from './reducers'
+const store = createStore(todoApp)
+window.aa = store
+
+
+
+ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 registerServiceWorker();
