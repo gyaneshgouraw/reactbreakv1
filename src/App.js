@@ -1,7 +1,15 @@
+/**
+ * NPM imports
+ */
+
 import React from 'react'
 import { BrowserRouter as Router,Route,Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Chip from '@material-ui/core/Chip'
 
+/**
+ * Local imports
+ */
 import './App.css';
 import Child1 from './module1/Container'
 import Child2 from './module2/Container'
@@ -24,6 +32,7 @@ const App = () => (
         <li><Link to="/Child1">Child1</Link></li>
         <li><Link to="/Child2">Child2</Link></li>
       </ul>
+      
       <hr/>
 
       <Route exact path="/" />
