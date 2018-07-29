@@ -41,7 +41,10 @@ class Container extends Component {
         <Grid   container xs='24'  justify="center"> 
           <Grid item xs={4} >
             <Papersheet   text='It conatains different experimental aspects of module1' headline='Module 1'/>
+
             <Buttom name = 'Test dispatch to store'   code='red' fnclick = {this.btnFnClick} />
+            <br/>
+            <Papersheet   text='server started' headline='Module 1'/>
           </Grid>
         </Grid>
           
