@@ -33,6 +33,7 @@ class Container extends Component {
   btnFnClick = () =>{
     console.log('red button was pressed')
     this.props.setval('new value')
+    this.props.history.push('/child2');
   }
   
   render() {
@@ -40,11 +41,11 @@ class Container extends Component {
       <div>
         <Grid   container xs='24'  justify="center"> 
           <Grid item xs={4} >
-            <Papersheet   text='It conatains different experimental aspects of module1' headline='Module 1'/>
+            <Papersheet   text='It conatains different experimental aspects of module1' headline='Scheduller'/>
 
             <Buttom name = 'Test dispatch to store'   code='red' fnclick = {this.btnFnClick} />
             <br/>
-            <Papersheet   text='server started' headline='Module 1'/>
+            
           </Grid>
         </Grid>
           

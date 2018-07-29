@@ -14,6 +14,7 @@ import './App.css';
 import Child1 from './module1/Container'
 import Child2 from './module2/Container'
 import Home from './initial/home'
+import Login from './Login/Container'
 
 /** 
  * Imports for redux 
@@ -21,24 +22,16 @@ import Home from './initial/home'
 import { Provider } from 'react-redux'
 
 
-
+// <Route  path="/login"   component={Login}/>
 
 const App = () => (
   <Router>
-    <div>
-      <Home />
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/Child1">Child1</Link></li>
-        <li><Link to="/Child2">Child2</Link></li>
-      </ul>
-      
-      <hr/>
-
-      <Route exact path="/" />
-      <Route path="/child1" component={Child1}/>
-      <Route path="/child2" component={Child2}/>
-    </div>
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route path="/child1" component={Child1}/>
+          <Route path="/child2" component={Child2}/>
+        </div>
   </Router>
 )
 
