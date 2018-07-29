@@ -17,7 +17,7 @@
     "save": "^2.3.2"
   },
   "scripts": {
-    "start": "node server/server",
+    "start": " NODE_ENV=production node server.js",
     "start1": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
