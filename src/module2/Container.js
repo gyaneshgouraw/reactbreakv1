@@ -22,7 +22,6 @@ class Container extends Component {
 
   constructor(props){
     super()
-    this.btnFnClick = this.btnFnClick.bind(this)
   }
 
   componentWillMount = () => {
@@ -30,10 +29,6 @@ class Container extends Component {
     
   }
 
-  btnFnClick = () =>{
-    this.props.setval('dispatch from module 2')
-    this.props.history.push('/child1');  
-  }
   
   render() {
     return (
@@ -41,7 +36,7 @@ class Container extends Component {
         <Grid   container xs='24'  justify="center"> 
           <Grid item xs={4} >
             <Papersheet   text='It conatains different experimental aspects of module 2' headline='Module 2'/>
-            <Buttom name = 'view child1'   code='red' fnclick = {this.btnFnClick} />
+            
           </Grid>
         </Grid>
           
