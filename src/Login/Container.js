@@ -13,25 +13,18 @@ import mapDispatchToProps from './dispatches'
 
 
 class Container extends Component {
-  // constructor(props){
-  //   super()
-  //   this.btnLogin = this.btnLogin.bind(this)
-  //   this.btnLogout = this.btnLogout.bind(this)
-  // }
+ 
   constructor(props){
     super()
     this.btnSetLogin = this.btnSetLogin.bind(this)
-    this.btnLogout = this.btnLogout.bind(this)
   }
 
   btnSetLogin = () =>{
     this.props.setLogIn(true)
-    this.props.history.push('/child2');
+    this.props.history.push('/child1');
   }
 
-  btnLogout = () =>{
-    this.props.setLogIn(false)
-  }
+
 
 
   render() {
@@ -39,8 +32,7 @@ class Container extends Component {
       <div>
         <Papersheet   text='This is login page' headline='Login'/>
         <Buttom name = 'LogIn'  type="primary"  fnclick = {this.btnSetLogin} />
-        <br/>
-        <Buttom name = 'LogOut'  type="secondary"  fnclick = {this.btnLogout} />
+        
       </div>
     )
   }
