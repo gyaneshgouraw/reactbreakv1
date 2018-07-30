@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { BrowserRouter as Router,Route,Link } from 'react-router-dom'
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Chip from '@material-ui/core/Chip'
 
@@ -13,7 +13,7 @@ import Chip from '@material-ui/core/Chip'
 import './App.css';
 import Child1 from './module1/Container'
 import Child2 from './module2/Container'
-import Home from './initial/home'
+import Dashboard from './Dashboard/Container'
 import Login from './Login/Container'
 
 /** 
@@ -22,13 +22,13 @@ import Login from './Login/Container'
 import { Provider } from 'react-redux'
 
 
-// <Route  path="/login"   component={Login}/>
-
 const App = () => (
   <Router>
         <div>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route component = {Dashboard}/>
+          </Switch>
           <Route path="/child1" component={Child1}/>
           <Route path="/child2" component={Child2}/>
         </div>

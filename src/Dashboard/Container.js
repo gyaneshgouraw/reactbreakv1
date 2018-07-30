@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import logo from '../logo.svg';
 
-export default class componentName extends Component {
+class Container extends Component {
+  constructor(props){
+    super()
+
+  }
+
+componentWillMount = () => {
+  // if(this.props.login){
+  //   console.log('Dashboard mounted')
+  // }
+  //   else{
+  //     this.props.history.push('/login')
+  //   }
+  }
+
   render() {
     return (
       <div>
+        
         <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -13,8 +30,21 @@ export default class componentName extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {this.props.children}
       </div>
       </div>
     )
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    login: state.Login.loggedIn
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Container)

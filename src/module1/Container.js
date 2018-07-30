@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 /** 
  * Component import
@@ -28,12 +29,12 @@ class Container extends Component {
   }
 
   componentWillMount = () => {
-    if(this.props.login){
-      console.log('child-1 mounteds');
-    }
-    else{
-      this.props.history.push('/login');  
-    }
+    // if(this.props.login){
+    //   console.log('child-1 mounteds');
+    // }
+    // else{
+    //   this.props.history.push('/login');  
+    // }
     
     
   }
@@ -57,6 +58,7 @@ class Container extends Component {
 
             <Buttom name = 'view child2'   code='red' fnclick = {this.btnFnClick} />
             <br/>
+            <Link to="/child2">Child2</Link>
             <br/>
             <Buttom name = 'LogOut'  type="secondary"  fnclick = {this.btnLogout} />
             
