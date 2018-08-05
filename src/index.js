@@ -12,4 +12,4 @@ window.aa = store
 
 
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));
-registerServiceWorker();
+//registerServiceWorker();
