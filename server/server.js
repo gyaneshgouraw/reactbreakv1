@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const validator = require('express-validator');
+const path = require('path');
 
 
 
@@ -20,17 +21,32 @@ const options = {
     replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
 };
 
+//configuring path
+app.use(express.static(path.join(__dirname, '../build')));
+
+
 // Initialise the express components
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(compression());
 app.use(validator());
 
+
 // Initialise the API routes
 app.use('/api', require('./routes/scheduler.routes'));
 app.get('/api/ping', (req, res) => res.send('pong'));
-// app.use(express.static(__dirname + '/../public'));
+
+
+
+//serving client
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  });
+
+//Error page
 app.use((req, res) => res.status(404).json({code: 404, message: 'HTTP 404 Not Found'}));
+
+
 
 // Connect to MongoDB
 mongoose.connect(mongoUri,options);
