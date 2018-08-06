@@ -18,6 +18,17 @@ function reducer(state = initstate,  action) {
               fail: action.message
             })
           }
+
+          case 'USER_CREATE_SUCCEEDED':{
+            return Object.assign({}, state, {
+              newuser: action.user
+            })
+          }
+          case 'USER_CREATE_FAILED':{
+            return Object.assign({}, state, {
+              fail: action.message
+            })
+          }
         default:
           return state
       }
