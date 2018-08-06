@@ -1,5 +1,5 @@
 {
     "port": 8080,
-    "mongoUri": "mongodb://gg:gg@ds027155.mongolab.com:27155/custdb"
+    "mongoUri":"mongodb://schedullerapp:schedullerapp123@ds115022.mlab.com:15022/custdb"
   }
   
