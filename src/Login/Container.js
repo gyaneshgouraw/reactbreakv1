@@ -11,6 +11,7 @@ import Papersheet from '../components/Papersheet'
 import Buttom  from '../components/button'
 import mapDispatchToProps from './dispatches'
 import img from '../images/login.jpg'
+import Signup from './signup'
 
 
 class Container extends Component {
@@ -22,8 +23,14 @@ class Container extends Component {
 
 
   btnSetLogin = () =>{
-    this.props.setLogIn(true)
-    this.props.history.push('/child1');
+    this.props.dispatch({type: 'USER_FETCH_REQUESTED', data:'hj'})
+    //this.props.setLogIn(true)
+    //this.props.history.push('/child1');
+  }
+
+  fnBtnSubmit = ( data ) =>{
+    this.props.dispatch({type: 'USER_CREATE_REQUESTED', data: data})
+    console.log(data)
   }
 
 
@@ -34,6 +41,7 @@ class Container extends Component {
         <div style={{marginTop:'30%'}}>
         <Papersheet   text='This is login page' headline='Login'/>
         <Buttom  name = 'LogIn'  type="primary"  fnclick = {this.btnSetLogin} />
+        <Signup btnSubmit={this.fnBtnSubmit}/>
         </div>
       </div>
     )
@@ -48,7 +56,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Container)
 
 
