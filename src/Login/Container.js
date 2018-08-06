@@ -22,8 +22,9 @@ class Container extends Component {
 
 
   btnSetLogin = () =>{
-    this.props.setLogIn(true)
-    this.props.history.push('/child1');
+    this.props.dispatch({type: 'USER_FETCH_REQUESTED', data:'hj'})
+    //this.props.setLogIn(true)
+    //this.props.history.push('/child1');
   }
 
 
@@ -48,7 +49,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Container)
 
 
