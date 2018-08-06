@@ -40,32 +40,35 @@ export default class Signup extends Component {
   }
 
   render() {
+    const master = {opacity:.8,backgroundColor:'#fff',marginTop:'5%',borderRadius:'1%'}
     return (
-      <div style={{backgroundColor:'#fff',marginTop:'5%',borderRadius:'1%'}}>
-       <Grid item={true} container spacing={24}  >
-            <Grid item={true} xs={12}  container spacing={24} direction="column" align="center" >
-              <Papersheet  headline='Signup Form'/>
-            </Grid>
-            <Grid item={true} xs={6}  container spacing={24} direction="column" align="center" >
-              <TextField id="name" label="Name"   onChange={this.getVal}/>
-            </Grid>
-
-            <Grid item={true} xs={6}  container spacing={24} direction="column" align="center" >
-              <TextField id="email" label="Email" onChange={this.getVal}/>
-            </Grid>
-
-            <Grid item={true} xs={6}  container spacing={24} direction="column" align="center">
-              <TextField id="mobile" label="Mobile" onChange={this.getVal}/>
-            </Grid>
-            <Grid item={true} xs={12}  container spacing={24} direction="column" align="center" >
-                <Grid item={true} xs={6}  >
-                  <Buttom  name = 'Submit'  type="primary"  fnclick = {this.btnSignUp} />
+      <div >
+       <Grid  xs={12} direction="row" justify="center" container spacing={24} alignment='center' >
+          <Grid  xs={8}  style={master} item={true} container spacing={24}  >
+                <Grid item={true} xs={12}  container spacing={24} direction="column" align="center" >
+                  <Papersheet  headline='Signup Form'/>
                 </Grid>
-                <Grid item={true} xs={6}  >
-                  <Buttom  name = 'Close'  type="secondary"  fnclick = {this.btnClose} />
+                <Grid item={true} xs={6}  container spacing={24} direction="column" align="center" >
+                  <TextField id="name" label="Name"   onChange={this.getVal}/>
                 </Grid>
-            </Grid>
-      </Grid>
+
+                <Grid item={true} xs={6}  container spacing={24} direction="column" align="center" >
+                  <TextField id="email" label="Email" onChange={this.getVal}/>
+                </Grid>
+
+                <Grid item={true} xs={6}  container spacing={24} direction="column" align="center">
+                  <TextField id="mobile" label="Mobile" onChange={this.getVal}/>
+                </Grid>
+                <Grid item={true} xs={12}  container spacing={24} direction="column" align="center" >
+                    <Grid item={true} xs={6}  >
+                      <Buttom  name = 'Submit'  type="primary"  fnclick = {this.btnSignUp} />
+                    </Grid>
+                    <Grid item={true} xs={6}  >
+                      <Buttom  name = 'Close'  type="secondary"  fnclick = {this.btnClose} />
+                    </Grid>
+                </Grid>
+          </Grid>
+       </Grid>
 
       </div>
     )
