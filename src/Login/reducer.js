@@ -1,7 +1,7 @@
-import { SET_LOG_IN } from './actionTypes'
+import { SET_LOG_IN ,TOGGLE_LOGIN_VIEW} from './actionTypes'
 
 
-const initstate = {}
+const initstate = { signup: false}
 function reducer(state = initstate,  action) {
     switch (action.type) {
         case SET_LOG_IN:
@@ -27,6 +27,12 @@ function reducer(state = initstate,  action) {
           case 'USER_CREATE_FAILED':{
             return Object.assign({}, state, {
               fail: action.message
+            })
+          }
+
+          case TOGGLE_LOGIN_VIEW :{
+            return Object.assign({}, state, {
+              signup: !(state.signup)
             })
           }
         default:
