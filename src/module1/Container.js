@@ -28,12 +28,12 @@ class Container extends Component {
   }
 
   componentWillMount = () => {
-    if(this.props.login){
-      console.log('child-1 mounteds');
-    }
-    else{
-      this.props.history.push('/login');  
-    }
+    // if(this.props.login){
+    //   console.log('child-1 mounteds');
+    // }
+    // else{
+    //   this.props.history.push('/login');  
+    // }
     
     
   }

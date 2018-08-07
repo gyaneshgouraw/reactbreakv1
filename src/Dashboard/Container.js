@@ -47,12 +47,13 @@ btnModule2 = () =>{
   }
 
   render() {
+    const name= this.props.user? this.props.user.name :'Scheduller App'
     return (
       <div>
         <div className="App">
           <header className="App-header">
             {/* <img src={img} className="App-logo" alt="logo" /> */}
-            <h1 className="App-title">Scheduller App</h1>
+            <h1 className="App-title">Welcome {name}</h1>
           </header>
       </div>
       <Grid item xs={12} >
@@ -70,7 +71,7 @@ btnModule2 = () =>{
 
 const mapStateToProps = state => {
   return {
-    login: state.Login.loggedIn
+    user: state.Login.user && state.Login.user[0]
   }
 }
 

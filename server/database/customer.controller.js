@@ -1,26 +1,13 @@
-/**
- * Module imports
- */
-import {getCustomerCollection,createCustomerCollection} from './customer.client'
 
-
-
-export const router = require('express').Router();
 
 
 
 /**
  * 
+ * @param {*} req 
+ * @param {*} res 
  */
-router.get('/customercollection', function (req, res) {
-    getCustomerCollection(res);
-});
-/**
- * 
- */
-router.post('/customercollection', function (req, res) {
-    createCustomerCollection(req,res)
-});
-
-
-
+export const checkLogin=(res,err,docs)=>{
+    
+        docs?res.send(docs):res.send(err);
+ }
