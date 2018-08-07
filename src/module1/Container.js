@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom'
  import Buttom  from '../components/button'
  import Papersheet  from '../components/Papersheet'
  import mapDispatchToProps from './dispatches'
+ import AddMembers from './addMembers'
 
  
 
@@ -42,9 +43,13 @@ class Container extends Component {
   render() {
     return (
       <div>
-        <Grid   container xs='24'  justify="center"> 
-          <Grid item xs={4} >
+        <Grid   xs={12}container spacing={24} direction="row"  justify="center" alignment='center'  > 
+          <Grid item xs={2} >
             <Papersheet   text='It conatains different experimental aspects of module1' headline='Scheduller'/>
+          </Grid>
+          <Grid item xs={10} >
+            <Papersheet   text='It conatains different experimental aspects of module1' headline='Scheduller'/>
+            <AddMembers />
           </Grid>
         </Grid>
           
