@@ -46,11 +46,8 @@ export default class AddMembers extends Component {
      * getTextval
      */
     getTextval = ( event ) => {
-        const row = event.target.id.split('-')[0],
-              itemId = event.target.id.split('-')[1],
-              val = event.target.value
-
-               this.setState({[event.target.id]: val})
+        const val = event.target.value
+        this.setState({[event.target.id]: val})
     } 
 
     renderItemList=()=>{
@@ -74,7 +71,7 @@ export default class AddMembers extends Component {
 
     fnsubmit = () =>{
         let userList = []
-        for(const i=1;i<=this.state.count.length;i++){
+        for(let i=1;i<=this.state.count.length;i++){
             var obj = {
                'name':this.state[i+'-name'],
                'phone':this.state[i+'-phone'],
