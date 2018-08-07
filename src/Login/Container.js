@@ -25,10 +25,19 @@ class Container extends Component {
     this.getLoginVal = this.getLoginVal.bind(this)
   }
 
+  componentWillReceiveProps(newstate){
+    const user = newstate.login.user
+    if( user && user.length ){
+      this.props.history.push('/child1');
+    }
+  }
+
 
   btnSetLogin = () =>{
     const data= {mobile:this.state.mobile}
+    
     this.props.dispatch({type: 'USER_LOGIN_REQUESTED', data})
+   
     //this.props.setLogIn(true)
     //this.props.history.push('/child1');
   }
