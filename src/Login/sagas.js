@@ -1,15 +1,22 @@
 /**
  * NPM imports
  */
-import axios from 'axios';
-import { call, put, takeEvery, takeLatest , all} from 'redux-saga/effects'
-import { connect } from 'mongoose';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+import { call, put, takeEvery, takeLatest , all} from 'redux-saga/effects'
+
+/**
+ * File imports
+ */
+import {get , post } from '../common/wrapper'
+import { url } from '../common/global.config'
+
+/**
+ * This function will fetch list of  registered users
+ * @param {*} action 
+ */
 function* fetchUser(action) {
    try {
-      const user = yield call(fetchUser1,'data');
-      console.log('--user',user)
+      const user = yield call(get, url.userlist);
       yield put({type: "USER_FETCH_SUCCEEDED", user: user});
    } catch (e) {
       yield put({type: "USER_FETCH_FAILED", message: e.message});
@@ -18,16 +25,30 @@ function* fetchUser(action) {
 
 /**
  * 
+ * @param {*} action 
  */
 function* createUser(action) {
   try {
-     const user = yield call(fetchPost,action.data);
-     console.log('--user',user)
+     const user = yield call(post,url.createUser,action.data);
      yield put({type: "USER_CREATE_SUCCEEDED", user: user});
   } catch (e) {
      yield put({type: "USER_CREATE_FAILED", message: e.message});
   }
 }
+
+/**
+ * This method is used for checking user login 
+ * @param {*} action 
+ */
+function* checkUserLogin( action) {
+  try {
+    const user = yield call(post,url.checkLogin,action.data);
+    yield put({type: "USER_LOGIN__SUCCEEDED", user: user});
+ } catch (e) {
+    yield put({type: "USER_LOGIN__FAILED", message: e.message});
+ }
+}
+
 
 
 /*
@@ -40,33 +61,12 @@ function* createUser(action) {
 function* mySaga() {
   yield all ([
     takeLatest("USER_FETCH_REQUESTED", fetchUser),
-    takeLatest("USER_CREATE_REQUESTED", createUser)]);
+    takeLatest("USER_CREATE_REQUESTED", createUser),
+    takeLatest("USER_LOGIN_REQUESTED", checkUserLogin)
+  ]);
 }
 
 export default mySaga;
 
 
 
-export function fetchUser1(userId) {
-    // `axios` function returns promise, you can use any ajax lib, which can
-    // return promise, or wrap in promise ajax call
-    return axios.get('http://localhost:8080/api/data/customercollection').then((response) => {
-        return response.data
-    })
-    .catch((error) => {
-      throw error
-    });
-  };
-
-
-  export function fetchPost(data) {
-    // `axios` function returns promise, you can use any ajax lib, which can
-    // return promise, or wrap in promise ajax call
-    return axios.post('http://localhost:8080/api/data/customercollection',data)
-    .then((response) => {
-        return response.data
-    })
-    .catch((error) => {
-      throw error
-    });
-  };

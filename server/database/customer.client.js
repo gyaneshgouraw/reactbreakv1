@@ -1,6 +1,9 @@
-
-
+/**
+ * 
+ */
+import { checkLogin } from './customer.controller'
 var CustomerCollection = require('../models/customercollection');
+
 
 
 /**
@@ -31,6 +34,11 @@ export function createCustomerCollection(req,res){
 }
 
 
+export function checkUserLogin( req,res){
+	  return CustomerCollection.find({ mobile: req.body['mobile']},function (err, docs) {
+		checkLogin(res,err,docs)
+	  });
+}
 
 
 //module.exports = router;

@@ -35,6 +35,17 @@ function reducer(state = initstate,  action) {
               signup: !(state.signup)
             })
           }
+
+          case 'USER_LOGIN__SUCCEEDED' :{
+            return Object.assign({}, state, {
+              user: action.user
+            })
+          }
+          case 'USER_LOGIN__FAILED' :{
+            return Object.assign({}, state, {
+              fail: action.message
+            })
+          }
         default:
           return state
       }

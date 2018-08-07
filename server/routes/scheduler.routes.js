@@ -1,6 +1,7 @@
+import  { router as databaseRoutes }  from '../database/customer.routes'
 const router = require('express').Router();
 const authController = require('../auth/auth.controller');
-import  { router as custClient }  from '../database/customer.controller'
+
 
 router.get('/auth', (req, res) => {
     return authController.authenticate(req,res);
@@ -10,7 +11,7 @@ router.get('/auth', (req, res) => {
 /**
  * Nesting routes for database different schemas
  */
-router.use('/data', custClient);
+router.use('/data', databaseRoutes);
 
 
 
