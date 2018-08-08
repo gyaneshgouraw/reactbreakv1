@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
  import Buttom  from '../components/button'
  import Papersheet  from '../components/Papersheet'
  import mapDispatchToProps from './dispatches'
- import AddMembers from './addMembers'
+ import CreateGroup from './createGroup'
 
  
 
@@ -25,7 +25,7 @@ class Container extends Component {
 
   constructor(props){
     super()
-    
+    this.btnsubmit = this.btnsubmit.bind(this)
   }
 
   componentWillMount = () => {
@@ -35,8 +35,14 @@ class Container extends Component {
     // else{
     //   this.props.history.push('/login');  
     // }
-    
-    
+  }
+
+  /**
+   * 
+   */
+  btnsubmit = ( groupObj ) =>{
+    const username = this.props.user ? this.props.user[0].mobile : 'testuser'
+    this.props.dispatch({ type:'GROUP_CREATE_REQUESTED',data:{...groupObj,'user':username}})
   }
 
   
@@ -49,7 +55,7 @@ class Container extends Component {
           </Grid>
           <Grid item xs={10} >
             <Papersheet   text='It conatains different experimental aspects of module1' headline='Scheduller'/>
-            <AddMembers />
+            <CreateGroup fnsubmit ={ this.btnsubmit }  />
           </Grid>
         </Grid>
           
@@ -61,7 +67,8 @@ class Container extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.Login.loggedIn
+    login: state.Login.loggedIn,
+    user: state.Login.user
   }
 }
 
