@@ -1,7 +1,7 @@
 /**
  * Module imports
  */
-import {getCustomerCollection,createCustomerCollection, checkUserLogin} from './customer.client'
+import {getCustomerCollection,createCustomerCollection, checkUserLogin, createSchedullerGroup} from './customer.client'
 
 
 
@@ -28,6 +28,15 @@ router.post('/customercollection', function (req, res) {
 router.post('/checkuserlogin', function (req, res) {
     checkUserLogin(req,res)
 });
+
+
+/**
+ * 
+ */
+router.post('/creategroup', function (req, res) {
+    createSchedullerGroup(req,res)
+});
+
 
 
 

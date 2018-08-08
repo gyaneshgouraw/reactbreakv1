@@ -13,7 +13,7 @@ import createSagaMiddleware from 'redux-saga'
  * custom imports
  */
 import reducers from './reducers'
-import mySaga from './Login/sagas'
+import rootsaga from './rootsaga'
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
@@ -23,8 +23,7 @@ const store = createStore(reducers,
     
 )
 
-
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(rootsaga)
 
 
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));

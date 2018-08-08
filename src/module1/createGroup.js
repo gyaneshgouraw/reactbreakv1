@@ -13,7 +13,7 @@ import Buttom  from '../components/button'
 /**
  * 
  */
-export default class AddMembers extends Component {
+export default class CreateGroup extends Component {
     constructor(props) {
         super(props);
         this.btnAddmore  = this.btnAddmore.bind(this)
@@ -21,6 +21,7 @@ export default class AddMembers extends Component {
         this.renderItemList = this.renderItemList.bind(this)
         this.getTextval = this.getTextval.bind(this)
         this.fnsubmit = this.fnsubmit.bind(this)
+        this.getDateVal = this.getDateVal.bind(this)
 
         this.state ={ count:[1]}
         //this.state = {[{'name':}]}
@@ -68,7 +69,9 @@ export default class AddMembers extends Component {
         })
     }
 
-
+    /**
+     * Master Submit form
+     */
     fnsubmit = () =>{
         let userList = []
         for(let i=1;i<=this.state.count.length;i++){
@@ -80,23 +83,55 @@ export default class AddMembers extends Component {
             userList.push(obj)
            }
 
+        const groupObj = {
+            startdate : this.state.startdate,
+            enddate : this.state.enddate,
+            members: userList
+        }
+        
+        this.props.fnsubmit( groupObj )
+
+    }
+
+    /**
+     * 
+     */
+    getDateVal =( event,type ) =>{
+        console.log(this.state)
+        const val = event.target.value
+        this.setState({[type]:val})
     }
     
-  render() {
-      const count = this.state.count.length
+    /**
+     * Render function
+     */
+    render() {
+        const count = this.state.count.length
+        const dateProp = {
+            shrink: true
+        }
+        return (
+        <div>
+            {this.renderItemList()}
+            <Grid xs={12}container spacing={24} direction="row"  justify="center" alignment='center'>
+                <Grid style={pad}><Buttom  name = {`+${count}`} type="primary"  fnclick = {this.btnAddmore} /></Grid>
+                <Grid style={pad}><Buttom  name = {`-${count}`} type="secondary"  fnclick = {this.btnDelete} /></Grid>
+            </Grid>
+            
+            <Grid  xs={12}container spacing={24} direction="row"  justify="center" alignment='center'  > 
+                            <Grid xs={3} style={pad}>
+                                <TextField fullWidth type='date' id='startdate' label="startdate"   onChange={(event)=>{this.getDateVal( event,'startdate')}} InputLabelProps={ dateProp }/>
+                            </Grid>
+                            <Grid xs={3} style={pad}>
+                                <TextField fullWidth  type='date' id='enddate' label="enddate"   onChange={(event)=>{this.getDateVal( event,'enddate')}} InputLabelProps={ dateProp }/>
+                            </Grid>
+                </Grid>
 
-    return (
-      <div>
-          {this.renderItemList()}
-          <Grid xs={12}container spacing={24} direction="row"  justify="center" alignment='center'>
 
-            <Grid style={pad}><Buttom  name = {`+${count}`} type="primary"  fnclick = {this.btnAddmore} /></Grid>
-            <Grid style={pad}><Buttom  name = {`-${count}`} type="secondary"  fnclick = {this.btnDelete} /></Grid>
-          </Grid>
-          <Grid style={pad}><Buttom  name = 'submit' type="secondary"  fnclick = {this.fnsubmit} /></Grid>
-      </div>
-    )
-  }
+            <Grid style={pad}><Buttom  name = 'submit' type="secondary"  fnclick = {this.fnsubmit} /></Grid>
+        </div>
+        )
+    }
 }
 
 
