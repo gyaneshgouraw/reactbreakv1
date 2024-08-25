@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 /** 
  * Component import
@@ -13,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
  import Buttom  from '../components/button'
  import Papersheet  from '../components/Papersheet'
  import mapDispatchToProps from './dispatches'
+
  
 
  /**
@@ -22,26 +24,27 @@ class Container extends Component {
 
   constructor(props){
     super()
-    this.btnFnClick = this.btnFnClick.bind(this)
-  }
-
-  componentWillMount = () => {
-    console.log('child-1 mounteds');
     
   }
 
-  btnFnClick = () =>{
-    console.log('red button was pressed')
-    this.props.setval('new value')
+  componentWillMount = () => {
+    if(this.props.login){
+      console.log('child-1 mounteds');
+    }
+    else{
+      this.props.history.push('/login');  
+    }
+    
+    
   }
+
   
   render() {
     return (
       <div>
         <Grid   container xs='24'  justify="center"> 
           <Grid item xs={4} >
-            <Papersheet   text='It conatains different experimental aspects of module1' headline='Module 1'/>
-            <Buttom name = 'Test dispatch to store'   code='red' fnclick = {this.btnFnClick} />
+            <Papersheet   text='It conatains different experimental aspects of module1' headline='Scheduller'/>
           </Grid>
         </Grid>
           
@@ -53,11 +56,11 @@ class Container extends Component {
 
 const mapStateToProps = state => {
   return {
-    todo: state
+    login: state.Login.loggedIn
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Container)

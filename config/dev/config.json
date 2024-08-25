@@ -1,0 +1,5 @@
+{
+    "port": 8080,
+    "mongoUri": "mongodb://devUser:devUser1@ds113122.mlab.com:13122/scheduler"
+  }
+  

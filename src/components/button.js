@@ -19,7 +19,7 @@ export default class Buttom extends Component {
   render() {
     return (
       <div>
-        <Button variant="contained" color="primary" onClick={ this.props.fnclick}P>
+        <Button variant="contained" color={this.props.type || "primary"} onClick={ this.props.fnclick}P>
             {this.props.name}
         </Button>
       </div>
